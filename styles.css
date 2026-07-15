@@ -1540,3 +1540,119 @@ header.sticky {
     padding: 16px;
   }
 }
+
+/* 3D Elements & Advanced Visuals */
+.cube-container {
+  width: 80px;
+  height: 80px;
+  perspective: 600px;
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Position cubes in background */
+.hero-cube {
+  top: 15%;
+  right: 20%;
+  opacity: 0.7;
+}
+
+.about-cube {
+  top: 40%;
+  left: 10%;
+  opacity: 0.6;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: spin-cube 18s infinite linear;
+}
+
+.cube-face {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 1.5px solid rgba(157, 78, 221, 0.5);
+  background: rgba(25, 14, 56, 0.15);
+  box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
+  backdrop-filter: blur(2px);
+}
+
+.front  { transform: rotateY(0deg) translateZ(40px); }
+.back   { transform: rotateY(180deg) translateZ(40px); }
+.right  { transform: rotateY(90deg) translateZ(40px); }
+.left   { transform: rotateY(-90deg) translateZ(40px); }
+.top    { transform: rotateX(90deg) translateZ(40px); }
+.bottom { transform: rotateX(-90deg) translateZ(40px); }
+
+@keyframes spin-cube {
+  from { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  to { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+/* 3D Tilt Hover Effects */
+.tool-card {
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.tool-card:hover {
+  transform: perspective(1000px) rotateX(6deg) rotateY(-6deg) translateY(-8px);
+  box-shadow: -10px 15px 30px rgba(157, 78, 221, 0.25), 0 0 20px rgba(0, 240, 255, 0.1);
+}
+
+.prereq-card {
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.prereq-card:hover {
+  transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateY(-4px);
+  box-shadow: -8px 10px 25px rgba(157, 78, 221, 0.2);
+}
+
+.code-terminal {
+  transform: perspective(1000px) rotateX(4deg) rotateY(-6deg);
+  transition: transform 0.5s ease;
+}
+
+.code-terminal:hover {
+  transform: perspective(1000px) rotateX(1deg) rotateY(-1deg);
+}
+
+/* Tiny Sparkles / Moving Particles */
+.tiny-particle {
+  position: fixed;
+  background: #00f0ff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  box-shadow: 0 0 8px #00f0ff;
+  animation: drift-up-particle infinite linear;
+}
+
+.tiny-particle.purple {
+  background: #bd00ff;
+  box-shadow: 0 0 8px #bd00ff;
+}
+
+@keyframes drift-up-particle {
+  0% {
+    transform: translateY(105vh) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(40px);
+    opacity: 0;
+  }
+}

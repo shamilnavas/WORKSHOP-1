@@ -183,4 +183,39 @@ document.addEventListener('DOMContentLoaded', () => {
     successScreen.classList.add('hidden');
     formWrapper.classList.remove('hidden');
   });
+
+  // 7. Dynamic Background Sparkles/Particles
+  function createTinyParticles() {
+    const container = document.body;
+    const particleCount = 35;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('tiny-particle');
+      
+      // Randomize size, placement, delay, and duration
+      const size = Math.random() * 3 + 1.5;
+      const posX = Math.random() * 100;
+      const posY = Math.random() * 100;
+      const delay = Math.random() * 15;
+      const duration = Math.random() * 20 + 15;
+      const opacity = Math.random() * 0.4 + 0.15;
+      
+      if (Math.random() > 0.5) {
+        particle.classList.add('purple');
+      }
+      
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${posX}vw`;
+      particle.style.top = `${posY}vh`;
+      particle.style.opacity = opacity;
+      particle.style.animationDelay = `${delay}s`;
+      particle.style.animationDuration = `${duration}s`;
+      
+      container.appendChild(particle);
+    }
+  }
+  
+  createTinyParticles();
 });
